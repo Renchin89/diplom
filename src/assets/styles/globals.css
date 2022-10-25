@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap");
+@import url("https://fonts.cdnfonts.com/css/sf-pro-display");
 
 @tailwind base;
 @tailwind components;
@@ -6,11 +7,16 @@
 
 @layer base {
   body {
-    font-family: 'SF Pro Display', 'Open Sans', sans-serif;
-    @apply flex justify-center text-sm text-gray-800 leading-6;
+    font-family: "SF Pro Display", "Open Sans", sans-serif;
+    @apply flex  text-sm text-gray-800 leading-6;
   }
 
-  button, img {
+  button,
+  img {
     @apply outline-none focus:outline-none !important;
   }
+}
+
+#__next {
+  @apply w-full;
 }

@@ -8,7 +8,7 @@ interface Props {
 }
 
 const MainPage: FunctionComponent<Props> = ({ className }) => {
-  return <div className={cn(className, "flex")}>a</div>;
+  return <div className={cn(className, "flex w-full")}>mainpage</div>;
 };
 
 export default MainPage;
