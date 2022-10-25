@@ -34,8 +34,7 @@ const Header: FunctionComponent<Props> = ({
           onClick={onClick}
         >
           <div className="w-10 h-10 flex items-center justify-center">
-            
-          {extended ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {extended ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </div>
         </div>
         <span className="p-4">header</span>
