@@ -1,15 +1,15 @@
 export enum MainTab {
-  DASHBOARD = "db",
-  CALENDAR = "cl",
+  DASHBOARD = "dashboard",
+  CALENDAR = "calendar",
 }
 
 export enum OrganizationTab {
-  EMPLOYEE = "em",
-  STRUCTURE = "sr",
-  SETTINGS = "st",
-  REPORT = "rp",
+  EMPLOYEE = "employee",
+  STRUCTURE = "structure",
+  SETTINGS = "settings",
+  REPORT = "report",
 }
 
 export enum RecruitmentTab {
-  CANDIDATES = "cd",
+  CANDIDATES = "candidates",
 }
