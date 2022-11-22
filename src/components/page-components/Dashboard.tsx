@@ -12,9 +12,9 @@ import {
   Paper,
   Select,
 } from "@material-ui/core";
-import { Employee, EmployeeStatus } from "../../types/employee";
 import { EmailIcon, MoreIcon, PhoneIcon, PrintIcon } from "../../assets/icons";
 import dayjs from "dayjs";
+import { Employee, EmployeeStatus } from "../../types/employee";
 
 interface Props {
   className?: string;

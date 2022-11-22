@@ -27,7 +27,7 @@ const SideMenu: FunctionComponent<Props> = ({ className }) => {
     >
       <Tabs orientation="vertical" className="w-full">
         <Tab label={MainTab.EMPLOYEE} onClick={() => router.push("/")} />
-        <Tab label={MainTab.WORK} onClick={() => router.push("/Work")} />
+        <Tab label={MainTab.TASK} onClick={() => router.push("/Work")} />
         {/* </Tabs>
       <h1 className="p-4">Organization</h1>
       <Tabs orientation="vertical" className="w-full"> */}
