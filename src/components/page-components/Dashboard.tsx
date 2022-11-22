@@ -12,7 +12,7 @@ import {
   Paper,
   Select,
 } from "@material-ui/core";
-import { Employee, EmployeeStatus } from "../../types/dashboard";
+import { Employee, EmployeeStatus } from "../../types/employee";
 import { EmailIcon, MoreIcon, PhoneIcon, PrintIcon } from "../../assets/icons";
 import dayjs from "dayjs";
 
