@@ -3,14 +3,13 @@ import { FunctionComponent, useEffect, useState } from "react";
 import theme from "../site-settings/theme/mui-theme";
 import cn from "classnames";
 import Head from "next/head";
-import Header from "../components/page-components/header";
+import Header from "../components/page-components/Header";
 import SideMenu from "../components/page-components/sideMenu";
 
 const MainLayout: FunctionComponent<{ children?: any }> = ({ children }) => {
   const [isExtended, setIsExtended] = useState<boolean>(true);
 
   useEffect(() => {}, []);
-
   return (
     <ThemeProvider theme={theme}>
       <Head>
@@ -37,7 +36,7 @@ const MainLayout: FunctionComponent<{ children?: any }> = ({ children }) => {
           >
             {isExtended ? <span>HR SYSTEM</span> : <span>HR</span>}
           </div>
-          <SideMenu />
+          <SideMenu index={0} value={0} />
         </div>
         <div className="w-full bg-wallpaper-light">
           <Header

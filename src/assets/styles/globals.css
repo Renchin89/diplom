@@ -20,3 +20,21 @@
 #__next {
   @apply w-full;
 }
+
+.MuiTab-wrapper {
+  align-items: flex-start !important;
+}
+
+.sidebar button {
+  text-transform: capitalize;
+  margin-top: 8px;
+  opacity: 1;
+  padding: 10px 20px;
+  border-radius: 16px;
+  transition: 0.3s;
+}
+.sidebar button:hover{
+  transition: 0.3s;
+  color: #1c212d;
+  background-color: #ffd831;
+}
