@@ -39,3 +39,8 @@
   color: #1c212d;
   background-color: #ffd831;
 }
+.dot{
+  color: #ffd831;
+  margin-top: -10px;
+  margin-left: -15px;
+}
