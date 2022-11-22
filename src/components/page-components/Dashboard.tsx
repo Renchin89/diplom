@@ -114,11 +114,11 @@ const EmployeeCard: FunctionComponent<Employee> = (props) => {
         <div className="flex flex-col text-base space-y-2">
           <div className="flex space-x-2">
             <EmailIcon />
-            <p className="break-all">{email ?? ""}</p>
+            <p>{email ?? ""}</p>
           </div>
           <div className="flex space-x-2">
             <PhoneIcon />
-            <p className="break-all">{phoneNumber ?? ""}</p>
+            <p>{phoneNumber ?? ""}</p>
           </div>
         </div>
       </div>
