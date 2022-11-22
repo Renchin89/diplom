@@ -16,6 +16,8 @@ const ChevronLeftIcon: FunctionComponent<Props> = ({
     className={className}
     fill={stroke}
     stroke={stroke}
+    height="24"
+    width="24"
   >
     <path d="M9.954 14.754L10.8 15.6L14.4 12L10.8 8.4L9.954 9.246L12.702 12L9.954 14.754Z" />
   </svg>

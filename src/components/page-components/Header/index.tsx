@@ -6,7 +6,7 @@ import theme from "../../../site-settings/theme/mui-theme";
 import {
   ChevronRightIcon,
   ChevronLeftIcon,
-  Notification,
+  NotificationIcon,
 } from "../../../assets/icons";
 
 interface Props {
@@ -37,8 +37,8 @@ const Header: FunctionComponent<Props> = ({
         <h1 className="font-bold">NUM</h1>
       </span>
       <span className="absolute right-10 top-4 flex space-x-4">
-        <Notification />
-        <Notification />
+        <NotificationIcon />
+        <NotificationIcon />
       </span>
     </header>
   );

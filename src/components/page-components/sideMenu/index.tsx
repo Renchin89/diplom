@@ -59,7 +59,7 @@ const SideMenu: FunctionComponent<Props> = ({ className }) => {
         orientation="vertical"
         className="w-full"
       >
-        <a href="/Dashboard">
+        <a href="/">
           <Tab label={MainTab.DASHBOARD} />
         </a>
         <a href="/">
