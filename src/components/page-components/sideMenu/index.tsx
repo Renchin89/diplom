@@ -45,7 +45,6 @@ function TabPanel(props: Props) {
 const SideMenu: FunctionComponent<Props> = ({ className }) => {
   const [value, setValue] = useState(0);
   const router = useRouter();
-  console.log(MainTab);
   return (
     <div
       className={cn(
@@ -67,6 +66,7 @@ const SideMenu: FunctionComponent<Props> = ({ className }) => {
           <Tab label={MainTab.CALENDAR} />
         </a>
       </Tabs>
+      <h1 className="p-4">Organization</h1>
       <Tabs
         // onChange={(event: React.SyntheticEvent, newValue: number) => {
         //   setValue(newValue);
@@ -79,6 +79,7 @@ const SideMenu: FunctionComponent<Props> = ({ className }) => {
         <Tab label={OrganizationTab.SETTINGS} />
         <Tab label={OrganizationTab.STRUCTURE} />
       </Tabs>
+      <h1 className="p-4">Recruitment</h1>
       <Tabs
         // onChange={(event: React.SyntheticEvent, newValue: number) => {
         //   setValue(newValue);
