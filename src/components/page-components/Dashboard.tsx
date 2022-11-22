@@ -1,5 +1,5 @@
 import { ChangeEvent, FunctionComponent, useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import router, { useRouter } from "next/router";
 import cn from "classnames";
 import {
   Avatar,
@@ -68,7 +68,7 @@ const Employees = [
 const EmployeeCard: FunctionComponent<Employee> = (props) => {
   const { name, position, status, dateJoined, department, email, phoneNumber } =
     props;
-
+  const router = useRouter();
   return (
     <div className="rounded-lg bg-white p-3 space-y-4">
       <div className="flex items-center justify-between">
@@ -143,7 +143,13 @@ const Dashboard: FunctionComponent<Props> = ({ className }) => {
           <IconButton>
             <PrintIcon />
           </IconButton>
-          <Button>Add employee</Button>
+          <Button
+            onClick={() => {
+              router.push("/AddEmployee");
+            }}
+          >
+            Add employee
+          </Button>
         </div>
       </div>
       <div className="body grid grid-cols-4 gap-6 mt-6">
