@@ -29,27 +29,23 @@ export const theme = createTheme({
     MuiPaper: {
       variant: 'outlined'
     },
-    MuiStepContent: {
-      TransitionProps: {
-        unmountOnExit: false,
-        mountOnEnter: false
-      }
-    },
-    MuiCheckbox: {
-      disableRipple: true,
-      disableFocusRipple: true,
-      disableTouchRipple: true
-    },
-    MuiSelect: {
-      variant: 'outlined',
-      fullWidth: true,
-      margin: 'dense'
-    },
-    MuiTextField: {
-      variant: 'outlined',
-      fullWidth: true,
-      margin: 'dense'
-    },
+    // MuiStepContent: {
+    //   TransitionProps: {
+    //     unmountOnExit: false,
+    //     mountOnEnter: false
+    //   }
+    // },
+    // MuiCheckbox: {
+    //   disableRipple: true,
+    //   disableFocusRipple: true,
+    //   disableTouchRipple: true
+    // },
+    // MuiSelect: {
+    //   variant: 'outlined',
+    // },
+    // MuiTextField: {
+    //   variant: 'outlined',
+    // },
     MuiButton: {
       variant: 'contained',
       color: 'primary'

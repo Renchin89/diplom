@@ -14,6 +14,7 @@ import {
 } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import SelectInput from "@material-ui/core/Select/SelectInput";
+import { DepartmentTypes, EmployeeStatus } from "../../types/employee";
 
 interface Props {
   className?: string;
@@ -22,43 +23,50 @@ interface Props {
 }
 
 const AddEmployee: FunctionComponent<Props> = ({ className }) => {
-  const [department, setDepartment] = useState("");
-  const handleChange = (event: any) => {
-    setDepartment(event.target.value);
-  };
+  const departmentArray = Object.values(DepartmentTypes);
+  const employeeStatusArray = Object.values(EmployeeStatus);
+  const [department, setDepartment] = useState<DepartmentTypes>(
+    DepartmentTypes.DEVELOPER
+  );
+  const [status, setStatus] = useState<EmployeeStatus>(EmployeeStatus.ACTIVE);
+  
   return (
     <div className={cn(className, "")}>
       <div className="w-2/4 m-auto bg-white p-10">
-        <Avatar
-          className="w-56 h-56 mb-10 m-auto"
-        />
+        <Avatar className="w-56 h-56 mb-10 m-auto" />
         <Select
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        value={department}
-        label="Department"
-        onChange={handleChange}
-      >
-        <MenuItem value={1}>Product</MenuItem>
-        <MenuItem value={2}>Developer</MenuItem>
-        <MenuItem value={3}>Designer</MenuItem>
-      </Select>
+          defaultValue={department}
+          value={department}
+          label="Department"
+          onChange={(e) => {
+            setDepartment(e.target.value as DepartmentTypes);
+          }}
+        >
+          {departmentArray.map((dep, idx) => (
+            <MenuItem key={idx} value={idx}>
+              {dep}
+            </MenuItem>
+          ))}
+        </Select>
         <TextField id="outlined-basic" label="Name" variant="outlined" />
         <TextField id="outlined-basic" label="Email" variant="outlined" />
         <TextField id="outlined-basic" label="Phone" variant="outlined" />
         <TextField id="outlined-basic" label="Phone" variant="outlined" />
         <Select
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        value={department}
-        label="Actvier or Not active"
-        onChange={handleChange}
-      >
-        <MenuItem value={1}>Active</MenuItem>
-        <MenuItem value={2}>Not active</MenuItem>
-        <MenuItem value={3}>Unverified</MenuItem>
-      </Select>
-      <Button className="mt-10">Add Employee</Button>
+          defaultValue={status}
+          value={status}
+          label="Active or Not active"
+          onChange={(e) => {
+            setStatus(e.target.value as EmployeeStatus);
+          }}
+        >
+          {employeeStatusArray.map((emp, idx) => (
+            <MenuItem key={idx} value={idx}>
+              {emp}
+            </MenuItem>
+          ))}
+        </Select>
+        <Button className="mt-10">Add Employee</Button>
       </div>
     </div>
   );

@@ -10,9 +10,17 @@ export interface Employee {
   phoneNumber?: string;
 }
 
-export enum EmployeeStatus { 
+export enum EmployeeStatus {
   ACTIVE = "Active",
-  INACTIVE = "Not active"
+  INACTIVE = "Not active",
 }
+
+export enum DepartmentTypes {
+  PRODUCT = "Production",
+  DEVELOPER = "Developer",
+  DESIGNER = "Designer",
+}
+
+// export type DepartmentTypes = "Production" | "Developer" | "Designer"
 
 // export type activeStatus = "active" | "inactive";

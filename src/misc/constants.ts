@@ -1,6 +1,6 @@
 export enum MainTab {
   EMPLOYEE = "Employee",
-  WORK = "Work",
+  TASK = "Task",
 }
 
 export enum OrganizationTab {

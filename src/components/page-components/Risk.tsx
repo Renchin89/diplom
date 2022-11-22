@@ -37,12 +37,12 @@ const MainPage: FunctionComponent<Props> = ({ className }) => {
       <div className="">
         {arr.map((x, i) => {
           return (
-            <div>
+            <div key={i}>
               <TextField
                 className="mt-4"
                 name="risk"
                 value={x.risk}
-                onChange={e => handleInputChange(e, i)}
+                onChange={(e) => handleInputChange(e, i)}
               />
               {arr.length !== 1 && (
                 <Button className="mt-2" onClick={() => handleRemoveClick(i)}>

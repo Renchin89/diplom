@@ -1,10 +1,20 @@
 import { ChangeEvent, FunctionComponent, useEffect, useState } from "react";
 import router, { useRouter } from "next/router";
 import cn from "classnames";
-import { Avatar, Button, Checkbox, IconButton } from "@material-ui/core";
-import { Employee, EmployeeStatus } from "../../types/dashboard";
+import {
+  Avatar,
+  Button,
+  Checkbox,
+  FormControl,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Paper,
+  Select,
+} from "@material-ui/core";
 import { EmailIcon, MoreIcon, PhoneIcon, PrintIcon } from "../../assets/icons";
 import dayjs from "dayjs";
+import { Employee, EmployeeStatus } from "../../types/employee";
 
 interface Props {
   className?: string;
@@ -55,7 +65,7 @@ const Employees = [
   },
 ];
 
-const EmployeeCard: FunctionComponent<Employee> = props => {
+const EmployeeCard: FunctionComponent<Employee> = (props) => {
   const { name, position, status, dateJoined, department, email, phoneNumber } =
     props;
   const router = useRouter();
@@ -104,11 +114,11 @@ const EmployeeCard: FunctionComponent<Employee> = props => {
         <div className="flex flex-col text-base space-y-2">
           <div className="flex space-x-2">
             <EmailIcon />
-            <p className="break-all">{email ?? ""}</p>
+            <p>{email ?? ""}</p>
           </div>
           <div className="flex space-x-2">
             <PhoneIcon />
-            <p className="break-all">{phoneNumber ?? ""}</p>
+            <p>{phoneNumber ?? ""}</p>
           </div>
         </div>
       </div>
@@ -117,7 +127,7 @@ const EmployeeCard: FunctionComponent<Employee> = props => {
 };
 
 const Dashboard: FunctionComponent<Props> = ({ className }) => {
-  const employeeCount = Employees.reduce(total => {
+  const employeeCount = Employees.reduce((total) => {
     return total + 1;
   }, 0);
 
