@@ -12,7 +12,7 @@ export async function sendRequest (
     method: method
   }
 
-  let token = localStorage.get('auth-token');
+  let token = localStorage.getItem('auth-token');
 
   if (data) axiosConfig.data = data;
   if (params) axiosConfig.params = params;

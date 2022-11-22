@@ -1,12 +1,34 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import cn from "classnames";
 import { Button, TextField } from "@material-ui/core";
+import { sendRequest } from '../../utils/core';
 
 interface Props {
   className?: string;
 }
 
 const Login: FunctionComponent<Props> = ({ className }) => {
+
+  // Hooks
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
+  // Functions
+  const handleLogin = (event: any) => {
+    event.preventDefault();
+
+    sendRequest('/auth/login', 'post', {
+      email: email,
+      password: email
+    })
+      .then((res: any) => {
+        localStorage.setItem('auth-token', res.data.data);
+      })
+      .catch((error: any) => {
+        console.log(error);
+      })
+  }
+
   return (
     <div className={cn(className, "w-full")}>
       <div className="w-1/4 m-auto">
@@ -20,9 +42,9 @@ const Login: FunctionComponent<Props> = ({ className }) => {
             <p>|</p>
             <p>Register</p>
           </div>
-          <TextField type="email" placeholder="Email" />
-          <TextField type="password" placeholder="Password" />
-          <Button>Login</Button>
+          <TextField type="email" placeholder="Email" value={email} onChange={(e: any) => setEmail(e.target.value)} />
+          <TextField type="password" placeholder="Password" value={password} onChange={(e: any) => setPassword(e.target.value)} />
+          <Button onClick={handleLogin}>Login</Button>
         </div>
       </div>
     </div>
