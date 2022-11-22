@@ -1,3 +1,3 @@
-import MainPage from "../components/page-components/Homepage";
+import Dashboard from "../components/page-components/Dashboard";
 
-export default MainPage
+export default Dashboard
