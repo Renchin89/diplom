@@ -1,17 +1,7 @@
 import { ChangeEvent, FunctionComponent, useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import router, { useRouter } from "next/router";
 import cn from "classnames";
-import {
-  Avatar,
-  Button,
-  Checkbox,
-  FormControl,
-  IconButton,
-  InputLabel,
-  MenuItem,
-  Paper,
-  Select,
-} from "@material-ui/core";
+import { Avatar, Button, Checkbox, IconButton } from "@material-ui/core";
 import { Employee, EmployeeStatus } from "../../types/dashboard";
 import { EmailIcon, MoreIcon, PhoneIcon, PrintIcon } from "../../assets/icons";
 import dayjs from "dayjs";
@@ -65,10 +55,10 @@ const Employees = [
   },
 ];
 
-const EmployeeCard: FunctionComponent<Employee> = (props) => {
+const EmployeeCard: FunctionComponent<Employee> = props => {
   const { name, position, status, dateJoined, department, email, phoneNumber } =
     props;
-
+  const router = useRouter();
   return (
     <div className="rounded-lg bg-white p-3 space-y-4">
       <div className="flex items-center justify-between">
@@ -127,7 +117,7 @@ const EmployeeCard: FunctionComponent<Employee> = (props) => {
 };
 
 const Dashboard: FunctionComponent<Props> = ({ className }) => {
-  const employeeCount = Employees.reduce((total) => {
+  const employeeCount = Employees.reduce(total => {
     return total + 1;
   }, 0);
 
@@ -143,7 +133,13 @@ const Dashboard: FunctionComponent<Props> = ({ className }) => {
           <IconButton>
             <PrintIcon />
           </IconButton>
-          <Button>Add employee</Button>
+          <Button
+            onClick={() => {
+              router.push("/AddEmployee");
+            }}
+          >
+            Add employee
+          </Button>
         </div>
       </div>
       <div className="body grid grid-cols-4 gap-6 mt-6">

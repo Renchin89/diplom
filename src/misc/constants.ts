@@ -1,11 +1,11 @@
 export enum MainTab {
-  DASHBOARD = "dashboard",
-  CALENDAR = "calendar",
+  EMPLOYEE = "Employee",
+  WORK = "Work",
 }
 
 export enum OrganizationTab {
-  EMPLOYEE = "employee",
-  STRUCTURE = "structure",
+  ADDEMPLOYEE = "Add Employee",
+  RISK = "Risk",
   SETTINGS = "settings",
   REPORT = "report",
 }

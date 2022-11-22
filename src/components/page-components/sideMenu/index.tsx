@@ -1,20 +1,13 @@
 import { FunctionComponent, useState } from "react";
 import { useRouter } from "next/router";
 import cn from "classnames";
-import {
-  Button,
-  useMediaQuery,
-  useTheme,
-  Tabs,
-  Tab,
-  Box,
-  Typography,
-} from "@material-ui/core";
+import { Tabs, Tab } from "@material-ui/core";
 import {
   MainTab,
   OrganizationTab,
   RecruitmentTab,
 } from "../../../misc/constants";
+import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 
 interface Props {
   children?: React.ReactNode;
@@ -22,26 +15,6 @@ interface Props {
   value: number;
   className?: string;
 }
-function TabPanel(props: Props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
 const SideMenu: FunctionComponent<Props> = ({ className }) => {
   const [value, setValue] = useState(0);
   const router = useRouter();
@@ -52,42 +25,35 @@ const SideMenu: FunctionComponent<Props> = ({ className }) => {
         "flex flex-col text-left w-full px-6 py-10 sidebar"
       )}
     >
-      <Tabs
-        // onChange={(event: React.SyntheticEvent, newValue: number) => {
-        //   setValue(newValue);
-        // }}
-        orientation="vertical"
-        className="w-full"
-      >
-        <a href="/">
-          <Tab label={MainTab.DASHBOARD} />
-        </a>
-        <a href="/">
-          <Tab label={MainTab.CALENDAR} />
-        </a>
-      </Tabs>
+      <Tabs orientation="vertical" className="w-full">
+        <Tab label={MainTab.EMPLOYEE} onClick={() => router.push("/")} />
+        <Tab label={MainTab.WORK} onClick={() => router.push("/Work")} />
+        {/* </Tabs>
       <h1 className="p-4">Organization</h1>
-      <Tabs
-        // onChange={(event: React.SyntheticEvent, newValue: number) => {
-        //   setValue(newValue);
-        // }}
-        orientation="vertical"
-        className="w-full"
-      >
-        <Tab label={OrganizationTab.EMPLOYEE} />
-        <Tab label={OrganizationTab.REPORT} />
-        <Tab label={OrganizationTab.SETTINGS} />
-        <Tab label={OrganizationTab.STRUCTURE} />
-      </Tabs>
+      <Tabs orientation="vertical" className="w-full"> */}
+        <Tab
+          label={cn(OrganizationTab.ADDEMPLOYEE)}
+          onClick={() => router.push("/AddEmployee")}
+        />
+        <Tab
+          label={OrganizationTab.RISK}
+          onClick={() => router.push("/Risk")}
+        />
+        <Tab
+          label={OrganizationTab.SETTINGS}
+          onClick={() => router.push("/Settings")}
+        />
+        <Tab
+          label={OrganizationTab.REPORT}
+          onClick={() => router.push("/Report")}
+        />
+        {/* </Tabs>
       <h1 className="p-4">Recruitment</h1>
-      <Tabs
-        // onChange={(event: React.SyntheticEvent, newValue: number) => {
-        //   setValue(newValue);
-        // }}
-        orientation="vertical"
-        className="w-full"
-      >
-        <Tab label={RecruitmentTab.CANDIDATES} />
+      <Tabs orientation="vertical" className="w-full"> */}
+        <Tab
+          label={RecruitmentTab.CANDIDATES}
+          onClick={() => router.push("/Candidates")}
+        />
       </Tabs>
     </div>
   );
