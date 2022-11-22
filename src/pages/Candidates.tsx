@@ -1,3 +1,3 @@
-import Candidates from "../components/page-components/Candidates";
+import Login from "../components/login/Login";
 
-export default Candidates
+export default Login
