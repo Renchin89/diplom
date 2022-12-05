@@ -11,5 +11,5 @@ export enum OrganizationTab {
 }
 
 export enum RecruitmentTab {
-  CANDIDATES = "candidates",
+  CANDIDATES = "Login",
 }

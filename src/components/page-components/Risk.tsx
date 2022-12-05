@@ -37,9 +37,9 @@ const MainPage: FunctionComponent<Props> = ({ className }) => {
       <div className="">
         {arr.map((x, i) => {
           return (
-            <div key={i}>
+            <div key={i} className="">
               <TextField
-                className="mt-4"
+                className="mt-4 w-3/5"
                 name="risk"
                 value={x.risk}
                 onChange={(e) => handleInputChange(e, i)}

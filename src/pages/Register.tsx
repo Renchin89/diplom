@@ -1,28 +1,36 @@
 import { FunctionComponent, useState } from "react";
 import cn from "classnames";
 import { Button, TextField } from "@material-ui/core";
-import { sendRequest } from "../../utils/core";
+import { sendRequest } from "../utils/core";
 import { useRouter } from "next/router";
+
 interface Props {
   className?: string;
 }
 
-const Login: FunctionComponent<Props> = ({ className }) => {
+const Register: FunctionComponent<Props> = ({ className }) => {
   // Hooks
+  const router = useRouter();
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const router = useRouter();
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [username, setUserName] = useState<string>("");
   // Functions
   const handleLogin = (event: any) => {
     event.preventDefault();
 
-    sendRequest("/auth/login", "post", {
+    sendRequest("/auth/register", "post", {
       email: email,
       password: password,
+      firstname: firstName,
+      lastname: lastName,
+      username: username,
     })
       .then((res: any) => {
-        localStorage.setItem("auth-token", res.data.data);
-        router.push("/");
+        console.log(res);
+        router.push("/login")
       })
       .catch((error: any) => {
         console.log(error);
@@ -35,12 +43,17 @@ const Login: FunctionComponent<Props> = ({ className }) => {
           HR Risk Management System
         </h1>
 
-        <div className="mt-10 space-y-5 flex flex-col">
+        <div className="mt-10 flex flex-col space-y-4">
           <div className="flex space-x-2">
             <a href="/Login">Login</a>
             <p>|</p>
-            <p href="/Register">Register</p>
+            <a href="/Register">Register</a>
           </div>
+          <TextField
+            placeholder="username"
+            value={username}
+            onChange={(e: any) => setUserName(e.target.value)}
+          />
           <TextField
             type="email"
             placeholder="Email"
@@ -53,12 +66,24 @@ const Login: FunctionComponent<Props> = ({ className }) => {
             value={password}
             onChange={(e: any) => setPassword(e.target.value)}
           />
+          <TextField
+            type="string"
+            placeholder="FirstName"
+            value={firstName}
+            onChange={(e: any) => setFirstName(e.target.value)}
+          />
+          <TextField
+            type="string"
+            placeholder="LastName"
+            value={lastName}
+            onChange={(e: any) => setLastName(e.target.value)}
+          />
           <Button onClick={handleLogin} className="mt-5">
-            Login
+            Register
           </Button>
         </div>
       </div>
     </div>
   );
 };
-export default Login;
+export default Register;

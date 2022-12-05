@@ -52,7 +52,7 @@ const SideMenu: FunctionComponent<Props> = ({ className }) => {
       <Tabs orientation="vertical" className="w-full"> */}
         <Tab
           label={RecruitmentTab.CANDIDATES}
-          onClick={() => router.push("/Candidates")}
+          onClick={() => router.push("/Login")}
         />
       </Tabs>
     </div>

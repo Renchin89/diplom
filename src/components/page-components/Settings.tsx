@@ -9,7 +9,7 @@ interface Props {
 const AddEmployee: FunctionComponent<Props> = ({ className }) => {
   return (
     <div className={cn(className, "")}>
-      <div className="w-2/4 m-auto bg-white p-10">
+      <div className="w-2/4 m-auto bg-white p-10 flex flex-col space-y-3">
         <Avatar className="w-40 h-40 mb-10 m-auto" />
         <TextField id="outlined-basic" label="Name" variant="outlined" />
         <TextField id="outlined-basic" label="Email" variant="outlined" />

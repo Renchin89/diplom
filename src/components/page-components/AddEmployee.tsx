@@ -32,7 +32,7 @@ const AddEmployee: FunctionComponent<Props> = ({ className }) => {
   
   return (
     <div className={cn(className, "")}>
-      <div className="w-2/4 m-auto bg-white p-10">
+      <div className="w-2/4 m-auto bg-white p-10 flex flex-col space-y-4">
         <Avatar className="w-56 h-56 mb-10 m-auto" />
         <Select
           defaultValue={department}
