@@ -2,7 +2,7 @@ import { FunctionComponent, useState } from "react";
 import { useRouter } from "next/router";
 import cn from "classnames";
 import { Button, Paper, TextField } from "@material-ui/core";
-import Card from "./Card"
+import Card from "./Card";
 interface Props {
   className?: string;
 }

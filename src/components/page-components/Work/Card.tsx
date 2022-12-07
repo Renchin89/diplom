@@ -17,7 +17,7 @@ interface Props {
 }
 
 const Card: FunctionComponent<Props> = ({ className }) => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState<boolean | undefined>(false);
 
   return (
     <div

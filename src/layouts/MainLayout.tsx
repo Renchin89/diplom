@@ -3,7 +3,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import theme from "../site-settings/theme/mui-theme";
 import cn from "classnames";
 import Head from "next/head";
-import Header from "../components/page-components/Header";
+import Header from "../components/page-components/header";
 import SideMenu from "../components/page-components/sideMenu";
 
 const MainLayout: FunctionComponent<{ children?: any }> = ({ children }) => {
@@ -36,7 +36,7 @@ const MainLayout: FunctionComponent<{ children?: any }> = ({ children }) => {
           >
             {isExtended ? <span>HR SYSTEM</span> : <span>HR</span>}
           </div>
-          <SideMenu isExtended={isExtended}/>
+          <SideMenu isExtended={isExtended} />
         </div>
         <div className="w-full bg-wallpaper-light">
           <Header

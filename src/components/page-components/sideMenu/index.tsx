@@ -64,7 +64,7 @@ const SideMenu: FunctionComponent<Props> = ({
               selected: "bg-secondary text-primary",
             }}
             className={cn(
-              "rounded-2xl mt-2 capitalize text-base",
+              "rounded-2xl mt-2 capitalize text-base h-16",
               isExtended ? "px-4" : "px-2"
             )}
             label={isExtended ? item.label : ""}
@@ -106,7 +106,7 @@ const SideMenu: FunctionComponent<Props> = ({
               selected: "bg-secondary text-primary",
             }}
             className={cn(
-              "rounded-2xl mt-2 capitalize text-base",
+              "rounded-2xl mt-2 capitalize text-base h-16",
               isExtended ? "px-4" : "px-2"
             )}
             label={isExtended ? item.label : ""}
@@ -148,7 +148,7 @@ const SideMenu: FunctionComponent<Props> = ({
               selected: "bg-secondary text-primary",
             }}
             className={cn(
-              "rounded-2xl mt-2 capitalize text-base",
+              "rounded-2xl mt-2 capitalize text-base h-16",
               isExtended ? "px-4" : "px-2"
             )}
             label={isExtended ? item.label : ""}
