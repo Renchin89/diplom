@@ -39,7 +39,7 @@ const Login: FunctionComponent<Props> = ({ className }) => {
           <div className="flex space-x-2">
             <a href="/Login">Login</a>
             <p>|</p>
-            <p href="/Register">Register</p>
+            <a href="/Register">Register</a>
           </div>
           <TextField
             type="email"

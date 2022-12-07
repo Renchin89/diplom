@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import cn from "classnames";
 import {
@@ -11,9 +11,13 @@ import {
   Avatar,
 } from "@material-ui/core";
 import AdjustIcon from "@material-ui/icons/Adjust";
+import { TaskType } from "../../../types/tasks";
+import { sendRequest } from "../../../utils/core";
 
 interface Props {
   className?: string;
+  type: TaskType;
+  label?: string;
 }
 
 const Card: FunctionComponent<Props> = ({ className }) => {
@@ -26,8 +30,7 @@ const Card: FunctionComponent<Props> = ({ className }) => {
         " col w-80 p-2 bg-amber-300 overflow-y-auto rounded-lg "
       )}
     >
-      <div className="head text-xl mb-2 pl-2">Ene Progress</div>
-
+      <div className="head text-xl mb-2 pl-2">{label ?? ""}</div>
       <div className="body">
         <Paper
           onClick={() => {
