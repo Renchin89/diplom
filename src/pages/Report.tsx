@@ -1,3 +1,3 @@
-import Report from "../components/page-components/Report";
+import Report from "../components/page-components/report";
 
 export default Report

@@ -36,7 +36,7 @@ const MainLayout: FunctionComponent<{ children?: any }> = ({ children }) => {
           >
             {isExtended ? <span>HR SYSTEM</span> : <span>HR</span>}
           </div>
-          <SideMenu index={0} value={0} />
+          <SideMenu isExtended={isExtended}/>
         </div>
         <div className="w-full bg-wallpaper-light">
           <Header

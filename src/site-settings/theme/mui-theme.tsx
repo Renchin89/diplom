@@ -1,33 +1,34 @@
-import { createTheme } from '@material-ui/core/styles'
-import { COLORS } from './index'
+import { createTheme } from "@material-ui/core/styles";
+import { COLORS } from "./index";
 
-declare module '@material-ui/core/styles/createBreakpoints' {
+declare module "@material-ui/core/styles/createBreakpoints" {
   interface BreakpointOverrides {
-    '2xl': true
+    "2xl": true;
   }
 }
 
 export const theme = createTheme({
-  breakpoints: { // same as tailwind default breakpoint
+  breakpoints: {
+    // same as tailwind default breakpoint
     values: {
       xs: 0,
       sm: 640,
       md: 768,
       lg: 1024,
       xl: 1280,
-      '2xl': 1536
-    }
+      "2xl": 1536,
+    },
   },
   typography: {
-    fontFamily: '\'SF Pro Display\', \'Open Sans\', sans-serif'
+    fontFamily: "'SF Pro Display', 'Open Sans', sans-serif",
   },
   palette: {
     primary: COLORS.primary,
-    secondary: COLORS.tertiary
+    secondary: COLORS.tertiary,
   },
   props: {
     MuiPaper: {
-      variant: 'outlined'
+      variant: "outlined",
     },
     // MuiStepContent: {
     //   TransitionProps: {
@@ -47,13 +48,28 @@ export const theme = createTheme({
     //   variant: 'outlined',
     // },
     MuiButton: {
-      variant: 'contained',
-      color: 'primary'
+      variant: "contained",
+      color: "primary",
     },
     MuiTabs: {
-      indicatorColor: 'primary'
+      indicatorColor: "secondary",
     },
-  }
-})
+  },
+  overrides: {
+    MuiTab: {
+      wrapper: {
+        flexDirection: "row",
+        justifyContent: "start",
 
-export default theme
+        "& :first-child": {
+          marginBottom: "0 !important",
+        },
+      },
+      labelIcon: {
+        minHeight: "4rem",
+      },
+    },
+  },
+});
+
+export default theme;

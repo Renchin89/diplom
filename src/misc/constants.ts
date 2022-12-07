@@ -1,15 +1,13 @@
 export enum MainTab {
-  EMPLOYEE = "Employee",
   TASK = "Task",
 }
 
 export enum OrganizationTab {
-  ADDEMPLOYEE = "Add Employee",
+  EMPLOYEE = "Employee",
   RISK = "Risk",
-  SETTINGS = "settings",
-  REPORT = "report",
+  REPORT = "Report",
 }
 
-export enum RecruitmentTab {
-  CANDIDATES = "Login",
+export enum SettingsTab {
+  SETTINGS = "Settings",
 }

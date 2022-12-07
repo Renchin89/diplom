@@ -6,3 +6,8 @@ export { default as PhoneIcon } from "./Phone";
 export { default as EmailIcon } from "./Email";
 export { default as PrintIcon } from "./Print";
 export { default as Dot } from "./Dot";
+export { default as TaskIcon } from "./Task";
+export { default as EmployeeIcon } from "./Employee";
+export { default as RiskIcon } from "./Risk";
+export { default as SettingsIcon } from "./Settings";
+export { default as ReportIcon } from "./Report";

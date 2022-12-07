@@ -5,12 +5,7 @@ import {
   Avatar,
   Button,
   Checkbox,
-  FormControl,
   IconButton,
-  InputLabel,
-  MenuItem,
-  Paper,
-  Select,
 } from "@material-ui/core";
 import { EmailIcon, MoreIcon, PhoneIcon, PrintIcon } from "../../assets/icons";
 import dayjs from "dayjs";
@@ -18,8 +13,6 @@ import { Employee, EmployeeStatus } from "../../types/employee";
 
 interface Props {
   className?: string;
-  title: string;
-  year: number;
 }
 
 const Employees = [
@@ -126,7 +119,7 @@ const EmployeeCard: FunctionComponent<Employee> = (props) => {
   );
 };
 
-const Dashboard: FunctionComponent<Props> = ({ className }) => {
+const Employee: FunctionComponent<Props> = ({ className }) => {
   const employeeCount = Employees.reduce((total) => {
     return total + 1;
   }, 0);
@@ -172,4 +165,4 @@ const Dashboard: FunctionComponent<Props> = ({ className }) => {
     </div>
   );
 };
-export default Dashboard;
+export default Employee;

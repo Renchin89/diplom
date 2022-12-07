@@ -1,6 +1,29 @@
 import { FunctionComponent } from "react";
+import { EmployeeIcon, ReportIcon, RiskIcon, SettingsIcon, TaskIcon } from "../../assets/icons";
 import ChevronLeftIcon from "../../assets/icons/ChevronRight";
-import { MainTab, OrganizationTab, RecruitmentTab } from "../../misc/constants";
+import { MainTab, OrganizationTab, SettingsTab } from "../../misc/constants";
+
+const tasks: Array<{
+  type: string;
+  label: string;
+}> = [
+  {
+    type: "inProgress",
+    label: "In Progress",
+  },
+  {
+    type: "inProgress",
+    label: "In Progress",
+  },
+  {
+    type: "inProgress",
+    label: "In Progress",
+  },
+  {
+    type: "inProgress",
+    label: "In Progress",
+  },
+];
 
 export const navigationTabItems: Array<{
   groupLabel: string;
@@ -20,16 +43,10 @@ export const navigationTabItems: Array<{
     groupLabel: "Main",
     groupItems: [
       {
-        label: "EMPLOYEE",
-        value: MainTab.EMPLOYEE,
-        link: `/${MainTab.EMPLOYEE}`,
-        icon: ChevronLeftIcon,
-      },
-      {
         label: "Task",
         value: MainTab.TASK,
         link: `/${MainTab.TASK}`,
-        icon: ChevronLeftIcon,
+        icon: TaskIcon,
       },
     ],
   },
@@ -37,39 +54,33 @@ export const navigationTabItems: Array<{
     groupLabel: "Organization",
     groupItems: [
       {
-        label: "Add Employee",
-        value: OrganizationTab.ADDEMPLOYEE,
-        link: `/${OrganizationTab.ADDEMPLOYEE}`,
-        icon: ChevronLeftIcon,
-      },
-      {
-        label: "Report",
-        value: OrganizationTab.REPORT,
-        link: `/${OrganizationTab.REPORT}`,
-        icon: ChevronLeftIcon,
+        label: "Employee",
+        value: OrganizationTab.EMPLOYEE,
+        link: `/`,
+        icon: EmployeeIcon,
       },
       {
         label: "Risk",
         value: OrganizationTab.RISK,
         link: `/${OrganizationTab.RISK}`,
-        icon: ChevronLeftIcon,
+        icon: RiskIcon,
       },
       {
-        label: "Settings",
-        value: OrganizationTab.SETTINGS,
-        link: `/${OrganizationTab.SETTINGS}`,
-        icon: ChevronLeftIcon,
+        label: "Report",
+        value: OrganizationTab.REPORT,
+        link: `/${OrganizationTab.REPORT}`,
+        icon: ReportIcon,
       },
     ],
   },
   {
-    groupLabel: "Recruitment",
+    groupLabel: "Settings",
     groupItems: [
       {
-        label: "Recruitment",
-        value: RecruitmentTab.CANDIDATES,
-        link: `/${RecruitmentTab.CANDIDATES}`,
-        icon: ChevronLeftIcon,
+        label: "Settings",
+        value: SettingsTab.SETTINGS,
+        link: `/${SettingsTab.SETTINGS}`,
+        icon: SettingsIcon,
       },
     ],
   },
