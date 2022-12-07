@@ -22,25 +22,5 @@
 }
 
 .MuiTab-wrapper {
-  align-items: flex-start !important;
-}
-
-.sidebar button {
-  font-size: 16px;
-  text-transform: capitalize;
-  margin-top: 8px;
-  opacity: 1;
-  padding: 10px 20px;
-  border-radius: 16px;
-  transition: 0.3s;
-}
-.sidebar button:hover{
-  transition: 0.3s;
-  color: #1c212d;
-  background-color: #ffd831;
-}
-.dot{
-  color: #ffd831;
-  margin-top: -10px;
-  margin-left: -15px;
+  align-items: center !important;
 }
