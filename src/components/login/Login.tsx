@@ -25,7 +25,7 @@ const Login: FunctionComponent<Props> = ({ className }) => {
         router.push("/");
       })
       .catch((error: any) => {
-        console.log(error);
+        console.error(error);
       });
   };
   return (

@@ -60,8 +60,8 @@ module.exports = {
           orange: "#FFB302",
           yellow: "#FCE83A",
           green: "#07C180",
-          gray: "9EA7AD",
-          cyan: "2DCCFF",
+          gray: "#9EA7AD",
+          cyan: "#2DCCFF",
         },
         fontSize: {
           xxs: ["0.625rem", { lineHeight: "0.75rem" }],
