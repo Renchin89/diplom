@@ -1,6 +1,7 @@
 export interface Employee {
   _id: string;
   name: string;
+  lastname: string;
   position?: string;
   status?: EmployeeStatus;
   image?: string;
@@ -12,8 +13,8 @@ export interface Employee {
 }
 
 export enum EmployeeStatus {
-  ACTIVE = "Active",
-  INACTIVE = "Not active",
+  ACTIVE = "active",
+  INACTIVE = "not active",
 }
 
 export enum DepartmentTypes {
@@ -21,8 +22,6 @@ export enum DepartmentTypes {
   DEVELOPER = "Developer",
   DESIGNER = "Designer",
 }
-
-
 
 // export type DepartmentTypes = "Production" | "Developer" | "Designer"
 

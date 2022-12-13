@@ -1,11 +1,29 @@
 import { ChangeEvent, FunctionComponent, useEffect, useState } from "react";
 import router, { useRouter } from "next/router";
 import cn from "classnames";
-import { Avatar, Button, Checkbox, IconButton } from "@material-ui/core";
+import {
+  Avatar,
+  Button,
+  Checkbox,
+  IconButton,
+  Select,
+  TextField,
+} from "@material-ui/core";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import { EmailIcon, MoreIcon, PhoneIcon, PrintIcon } from "../../assets/icons";
 import dayjs from "dayjs";
-import { Employee, EmployeeStatus } from "../../types/employee";
+import {
+  DepartmentTypes,
+  Employee,
+  EmployeeStatus,
+} from "../../types/employee";
 import { sendRequest } from "../../utils/core";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 interface Props {
   className?: string;
@@ -14,6 +32,7 @@ interface Props {
 const EmployeeCard: FunctionComponent<Employee> = props => {
   const {
     name,
+    lastname,
     position,
     status,
     dateJoined,
@@ -23,16 +42,47 @@ const EmployeeCard: FunctionComponent<Employee> = props => {
     _id,
     refreshRequest,
   } = props;
+  const stats = Object.values(EmployeeStatus);
+  const departments = Object.values(DepartmentTypes);
   const router = useRouter();
-  const [dropMenu, setDropMenu] = useState<boolean>(false);
-  const [updatedData, setUpdatedData] = useState<any>({});
-  const handleUpdate = () => {
-    sendRequest(`/user/${_id}`, "put", updatedData).then((res: any) => {
+  const [updatedData, setUpdatedData] = useState<{
+    firstname?: string;
+    lastname?: string;
+    position?: string;
+    phone?: number;
+    department?: string;
+    status?: string;
+    email?: string;
+  }>();
+  const [open, setOpen] = useState<boolean>(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const handleDelete = () => {
+    sendRequest(`/user/${_id}`, "delete").then((res: any) => {
       refreshRequest && refreshRequest();
+      handleClose();
       console.log(res);
     });
   };
+  const handleClick = (event: any) => {
+    setAnchorEl(event.currentTarget);
+  };
 
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleUpdate = () => {
+    console.log(updatedData);
+    sendRequest(`/user/${_id}`, "put", updatedData)
+      .then((res: any) => {
+        setOpen(!open);
+        refreshRequest && refreshRequest();
+        console.log(res);
+      })
+      .catch((error: any) => {
+        console.error(error);
+      });
+  };
   return (
     <div className="rounded-lg bg-white p-3 space-y-4">
       <div className="flex items-center justify-between">
@@ -40,7 +90,7 @@ const EmployeeCard: FunctionComponent<Employee> = props => {
         <div className="flex flex-row space-x-2 items-center">
           <div
             className={cn(
-              "border rounded-md px-2 py-px h-7 cursor-pointer",
+              "border rounded-md px-2 py-px h-7 cursor-pointer capitalize",
               status === EmployeeStatus.ACTIVE
                 ? "border-status-green text-status-green"
                 : "border-status-red text-status-red"
@@ -48,14 +98,132 @@ const EmployeeCard: FunctionComponent<Employee> = props => {
           >
             {status ?? "active"}
           </div>
-          <IconButton onClick={() => setDropMenu(!dropMenu)}>
+          <IconButton onClick={handleClick}>
             <MoreIcon />
           </IconButton>
-          <div className={cn("flex-col flex absolute bg-white border-black", dropMenu ? "" : "hidden")}>
-            <a>Edit</a>
-            <a>Edit</a>
-            <a>Edit</a>
-          </div>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="form-dialog-title"
+          >
+            <DialogTitle id="form-dialog-title">Edit</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                To subscribe to this website, please enter your email address
+                here. We will send updates occasionally.
+              </DialogContentText>
+              <TextField
+                label="Firstname"
+                defaultValue={name}
+                className="w-full mb-5"
+                variant="outlined"
+                onChange={async (e: any) => {
+                  const val = e.target.value;
+                  setUpdatedData({ firstname: val });
+                }}
+              />
+              <TextField
+                label="Lastname"
+                defaultValue={lastname}
+                className="w-full mb-5"
+                variant="outlined"
+                onChange={async (e: any) => {
+                  const val = e.target.value;
+                  setUpdatedData({ lastname: val });
+                }}
+              />
+              <TextField
+                label="Position"
+                defaultValue={position}
+                className="w-full mb-5"
+                variant="outlined"
+                onChange={async (e: any) => {
+                  const val = e.target.value;
+                  setUpdatedData({ position: val });
+                }}
+              />
+              {/* <Select
+                labelId="demo-simple-select-helper-label"
+                id="demo-simple-select-helper"
+                defaultValue={department}
+                onChange={async (e: any) => {
+                  const val = e.target.value;
+                  await setUpdatedData({ department: val });
+                }}
+              >
+                {departments.map((dep, ind) => {
+                  return (
+                    <MenuItem key={ind} value={dep}>
+                      {dep}
+                    </MenuItem>
+                  );
+                })}
+              </Select> */}
+              <TextField
+                label="Phone"
+                defaultValue={phoneNumber}
+                className="w-full mb-5"
+                variant="outlined"
+                onChange={async (e: any) => {
+                  const val = e.target.value;
+                  setUpdatedData({ phone: val });
+                }}
+              />
+
+              <TextField
+                label="Email"
+                defaultValue={email}
+                className="w-full mb-5"
+                variant="outlined"
+                onChange={async (e: any) => {
+                  const val = e.target.value;
+                  setUpdatedData({ email: val });
+                }}
+              />
+
+              <Select
+                className="w-3/5 capitalize mb-5 pl-3"
+                id="demo-simple-select-helper"
+                defaultValue={status}
+                onChange={async (e: any) => {
+                  const val = e.target.value;
+                  await setUpdatedData({ status: val });
+                }}
+              >
+                {stats.map((stat, ind) => {
+                  return (
+                    <MenuItem className="capitalize" key={ind} value={stat}>
+                      {stat}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={() => setOpen(!open)} color="primary">
+                Cancel
+              </Button>
+              <Button onClick={handleUpdate} color="primary">
+                Save
+              </Button>
+            </DialogActions>
+          </Dialog>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem
+              onClick={() => {
+                setOpen(!open);
+              }}
+            >
+              Edit
+            </MenuItem>
+            <MenuItem onClick={handleDelete}>Delete</MenuItem>
+          </Menu>
         </div>
       </div>
       <div className="profile flex flex-col text-center items-center text-base">
@@ -64,7 +232,10 @@ const EmployeeCard: FunctionComponent<Employee> = props => {
           alt={name ?? ""}
           src="/static/images/avatar/1.jpg"
         />
-        <p className="font-bold">{name}</p>
+        <p className="font-bold Cap">
+          {lastname}&nbsp;
+          {name}
+        </p>
         <p className="text-gray-600">{position ?? ""}</p>
       </div>
       <div className="bg-wallpaper-light rounded border border-gray-400 p-3 space-y-4">
@@ -106,7 +277,8 @@ const Employee: FunctionComponent<Props> = ({ className }) => {
         const _employees = res.data.data.users.map((item: any) => {
           return {
             _id: item._id,
-            name: item.firstname || "" + " " + item.lastname || "",
+            name: item.firstname || "",
+            lastname: item.lastname || "",
             position: item.position || "",
             status: item.status || EmployeeStatus.INACTIVE,
             dateJoined: new Date(item.createdAt || ""),
@@ -150,6 +322,7 @@ const Employee: FunctionComponent<Props> = ({ className }) => {
               key={idx}
               _id={employee._id}
               name={employee.name}
+              lastname={employee.lastname}
               position={employee.position}
               status={employee.status}
               dateJoined={employee.dateJoined}
