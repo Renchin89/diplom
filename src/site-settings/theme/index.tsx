@@ -13,7 +13,7 @@ export const COLORS = {
     orange: "#FFB302",
     yellow: "#FCE83A",
     green: "#07C180",
-    gray: "9EA7AD",
-    cyan: "2DCCFF",
+    gray: "#9EA7AD",
+    cyan: "#2DCCFF",
   },
 };

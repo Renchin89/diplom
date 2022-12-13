@@ -10,12 +10,12 @@ export const tasks: Array<{
         label: "To Do"
     },
     {
-        type: "inprogress",
+        type: "inProgress",
         label: "In Progress"
     },
     {
-        type: "done",
-        label: "Done"
+        type: "inReview",
+        label: "In Review"
     },
     {
         type: "complete",

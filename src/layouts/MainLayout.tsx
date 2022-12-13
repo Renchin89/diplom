@@ -3,7 +3,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import theme from "../site-settings/theme/mui-theme";
 import cn from "classnames";
 import Head from "next/head";
-import Header from "../components/page-components/Header";
+import Header from "../components/page-components/header";
 import SideMenu from "../components/page-components/sideMenu";
 
 const MainLayout: FunctionComponent<{ children?: any }> = ({ children }) => {
@@ -20,12 +20,12 @@ const MainLayout: FunctionComponent<{ children?: any }> = ({ children }) => {
       </Head>
       <div
         id="main-container"
-        className="flex flex-row justify-center min-h-full relative"
+        className={cn("flex-row justify-center min-h-full relative transition-all duration-500", isExtended ? "grid grid-cols-5" : "flex")}
       >
         <div
           className={cn(
-            isExtended ? "max-w-sm w-96" : "w-24",
-            "bg-wallpaper-dark text-lg text-white transition-all duration-500"
+            isExtended ? "grid-cols-1" : "w-24",
+            "bg-wallpaper-dark text-lg text-white"
           )}
         >
           <div
@@ -36,9 +36,14 @@ const MainLayout: FunctionComponent<{ children?: any }> = ({ children }) => {
           >
             {isExtended ? <span>HR SYSTEM</span> : <span>HR</span>}
           </div>
-          <SideMenu isExtended={isExtended}/>
+          <SideMenu isExtended={isExtended} />
         </div>
-        <div className="w-full bg-wallpaper-light">
+        <div
+          className={cn(
+            "w-full bg-wallpaper-light",
+            isExtended ? "col-span-4" : "w-full"
+          )}
+        >
           <Header
             extended={isExtended}
             onClick={() => {
