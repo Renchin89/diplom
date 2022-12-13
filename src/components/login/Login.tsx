@@ -28,6 +28,7 @@ const Login: FunctionComponent<Props> = ({ className }) => {
         console.log(error);
       });
   };
+
   return (
     <div className={cn(className, "w-full")}>
       <div className="w-2/5 m-auto">

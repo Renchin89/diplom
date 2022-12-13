@@ -8,6 +8,7 @@ export interface Employee {
   dateJoined: Date;
   email?: string;
   phoneNumber?: string;
+  refreshRequest?: () => void;
 }
 
 export enum EmployeeStatus {

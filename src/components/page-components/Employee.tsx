@@ -1,15 +1,11 @@
 import { ChangeEvent, FunctionComponent, useEffect, useState } from "react";
 import router, { useRouter } from "next/router";
 import cn from "classnames";
-import {
-  Avatar,
-  Button,
-  Checkbox,
-  IconButton,
-} from "@material-ui/core";
+import { Avatar, Button, Checkbox, IconButton } from "@material-ui/core";
 import { EmailIcon, MoreIcon, PhoneIcon, PrintIcon } from "../../assets/icons";
 import dayjs from "dayjs";
 import { Employee, EmployeeStatus } from "../../types/employee";
+import { sendRequest } from "../../utils/core";
 
 interface Props {
   className?: string;
@@ -58,10 +54,26 @@ const Employees = [
   },
 ];
 
-const EmployeeCard: FunctionComponent<Employee> = (props) => {
-  const { name, position, status, dateJoined, department, email, phoneNumber } =
-    props;
+const EmployeeCard: FunctionComponent<Employee> = props => {
+  const {
+    name,
+    position,
+    status,
+    dateJoined,
+    department,
+    email,
+    phoneNumber,
+    _id,
+    refreshRequest,
+  } = props;
   const router = useRouter();
+  const [updatedData, setUpdatedData] = useState<any>({ firstname: "firstname2edited" });
+  const handleUpdate = () => {
+    sendRequest(`/user/${_id}`, "put", updatedData).then((res: any) => {
+      refreshRequest && refreshRequest();
+      console.log(res);
+    });
+  };
   return (
     <div className="rounded-lg bg-white p-3 space-y-4">
       <div className="flex items-center justify-between">
@@ -77,7 +89,7 @@ const EmployeeCard: FunctionComponent<Employee> = (props) => {
           >
             {status ?? "active"}
           </div>
-          <IconButton>
+          <IconButton onClick={() => handleUpdate()}>
             <MoreIcon />
           </IconButton>
         </div>
@@ -120,9 +132,34 @@ const EmployeeCard: FunctionComponent<Employee> = (props) => {
 };
 
 const Employee: FunctionComponent<Props> = ({ className }) => {
-  const employeeCount = Employees.reduce((total) => {
+  const employeeCount = Employees.reduce(total => {
     return total + 1;
   }, 0);
+  const [refreshKey, setRefreshKey] = useState<number>(0);
+  const [employees, setEmployees] = useState<any[]>([]);
+
+  useEffect(() => {
+    sendRequest("/user/list", "get")
+      .then((res: any) => {
+        const _employees = res.data.data.users.map((item: any) => {
+          return {
+            _id: item._id,
+            name: item.firstname || "" + " " + item.lastname || "",
+            position: item.position || "",
+            status: item.status || EmployeeStatus.INACTIVE,
+            dateJoined: new Date(item.createdAt || ""),
+            department: item.department || "",
+            email: item.email || "",
+            phoneNumber: item.phone || "",
+          };
+        });
+
+        setEmployees(_employees);
+      })
+      .catch((err: any) => console.log(err));
+  }, [refreshKey]);
+
+  const refreshUserList = () => setRefreshKey(refreshKey + 1);
 
   return (
     <div className={cn(className, "flex flex-col w-full")}>
@@ -146,7 +183,7 @@ const Employee: FunctionComponent<Props> = ({ className }) => {
         </div>
       </div>
       <div className="body grid grid-cols-4 gap-6 mt-6">
-        {Employees.map((employee, idx) => {
+        {employees.map((employee, idx) => {
           return (
             <EmployeeCard
               key={idx}
@@ -158,6 +195,7 @@ const Employee: FunctionComponent<Props> = ({ className }) => {
               department={employee.department}
               email={employee.email}
               phoneNumber={employee.phoneNumber}
+              refreshRequest={refreshUserList}
             />
           );
         })}
