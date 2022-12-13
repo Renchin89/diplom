@@ -259,7 +259,6 @@ const TaskModal: FunctionComponent<{
 
 const Card: FunctionComponent<Props> = ({ className, type, label }) => {
   const [modalVisible, setModalVisible] = useState(false);
-  console.log("🚀 ~ file: Card.tsx:153 ~ modalVisible", modalVisible);
   const [selectedTask, setSelectedTask] = useState<Task>();
   const [posts, setPosts] = useState<string[]>([]);
   if (type === undefined || label === undefined) {
