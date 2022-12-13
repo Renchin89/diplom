@@ -11,49 +11,6 @@ interface Props {
   className?: string;
 }
 
-export const Employees = [
-  {
-    _id: "a1",
-    name: "Renchindorj",
-    position: "Developer",
-    status: EmployeeStatus.ACTIVE,
-    dateJoined: new Date(),
-    department: "Development team",
-    email: "18b1num0000@stud.num.edu.mn",
-    phoneNumber: "88015708",
-  },
-  {
-    _id: "a2",
-    name: "Renchindorj0",
-    position: "Developer",
-    status: EmployeeStatus.ACTIVE,
-    dateJoined: new Date(),
-    department: "Development team",
-    email: "18b1num0000@stud.num.edu.mn",
-    phoneNumber: "88015708",
-  },
-  {
-    _id: "a3",
-    name: "Renchindorj2",
-    position: "Developer",
-    status: EmployeeStatus.INACTIVE,
-    dateJoined: new Date(),
-    department: "Development team",
-    email: "18b1num0000@stud.num.edu.mn",
-    phoneNumber: "88015708",
-  },
-  {
-    _id: "a4",
-    name: "Renchindorj3",
-    position: "Developer",
-    status: EmployeeStatus.INACTIVE,
-    dateJoined: new Date(),
-    department: "Development team",
-    email: "18b1num0000@stud.num.edu.mn",
-    phoneNumber: "88015708",
-  },
-];
-
 const EmployeeCard: FunctionComponent<Employee> = props => {
   const {
     name,
@@ -67,13 +24,15 @@ const EmployeeCard: FunctionComponent<Employee> = props => {
     refreshRequest,
   } = props;
   const router = useRouter();
-  const [updatedData, setUpdatedData] = useState<any>({ firstname: "firstname2edited" });
+  const [dropMenu, setDropMenu] = useState<boolean>(false);
+  const [updatedData, setUpdatedData] = useState<any>({});
   const handleUpdate = () => {
     sendRequest(`/user/${_id}`, "put", updatedData).then((res: any) => {
       refreshRequest && refreshRequest();
       console.log(res);
     });
   };
+
   return (
     <div className="rounded-lg bg-white p-3 space-y-4">
       <div className="flex items-center justify-between">
@@ -89,9 +48,14 @@ const EmployeeCard: FunctionComponent<Employee> = props => {
           >
             {status ?? "active"}
           </div>
-          <IconButton onClick={() => handleUpdate()}>
+          <IconButton onClick={() => setDropMenu(!dropMenu)}>
             <MoreIcon />
           </IconButton>
+          <div className={cn("flex-col flex absolute bg-white border-black", dropMenu ? "" : "hidden")}>
+            <a>Edit</a>
+            <a>Edit</a>
+            <a>Edit</a>
+          </div>
         </div>
       </div>
       <div className="profile flex flex-col text-center items-center text-base">
@@ -132,11 +96,9 @@ const EmployeeCard: FunctionComponent<Employee> = props => {
 };
 
 const Employee: FunctionComponent<Props> = ({ className }) => {
-  const employeeCount = Employees.reduce(total => {
-    return total + 1;
-  }, 0);
   const [refreshKey, setRefreshKey] = useState<number>(0);
   const [employees, setEmployees] = useState<any[]>([]);
+  const [employeeCount, setEmployeeCount] = useState<any>("");
 
   useEffect(() => {
     sendRequest("/user/list", "get")
@@ -153,14 +115,13 @@ const Employee: FunctionComponent<Props> = ({ className }) => {
             phoneNumber: item.phone || "",
           };
         });
-
+        setEmployeeCount(res.data.data.total);
         setEmployees(_employees);
       })
       .catch((err: any) => console.log(err));
   }, [refreshKey]);
 
   const refreshUserList = () => setRefreshKey(refreshKey + 1);
-
   return (
     <div className={cn(className, "flex flex-col w-full")}>
       <div className="header flex justify-between align-middle items-center w-full">

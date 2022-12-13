@@ -30,7 +30,7 @@ const Register: FunctionComponent<Props> = ({ className }) => {
     })
       .then((res: any) => {
         console.log(res);
-        router.push("/login")
+        router.push("/")
       })
       .catch((error: any) => {
         console.error(error);
