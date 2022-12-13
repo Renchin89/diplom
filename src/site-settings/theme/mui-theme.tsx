@@ -69,6 +69,11 @@ export const theme = createTheme({
         minHeight: "4rem",
       },
     },
+    MuiPaper: {
+      rounded: {
+        borderRadius: "0.5rem",
+      },
+    },
   },
 });
 
