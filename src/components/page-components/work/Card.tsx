@@ -112,52 +112,6 @@ const Task: Array<Task> = [
   },
 ];
 
-// <Modal
-//   aria-labelledby="transition-modal-title"
-//   aria-describedby="transition-modal-description"
-//   open={isVisible}
-//   onClose={() => {
-//     onClose();
-//   }}
-//   closeAfterTransition
-//   BackdropComponent={Backdrop}
-//   BackdropProps={{
-//     timeout: 500,
-//   }}
-// >
-//   <Fade in={isVisible}>
-//     <div className="w-2/4 flex-wrap flex bg-white m-auto mt-40 p-12">
-//       <div className="flex justify-between">
-//         <h1 className="text-lg">{title}</h1>
-//         <h1
-//           className={
-//             (cn(
-//               priority === "Urgent"
-//                 ? "text-status-red"
-//                 : priority === "High"
-//                 ? "text-status-orange"
-//                 : priority === "Normal"
-//                 ? "text-status-yellow"
-//                 : "text-status-gray"
-//             ),
-//             "font-bold text-base")
-//           }
-//         >
-//           {priority}
-//         </h1>
-//       </div>
-//       <div className="">
-//         <h1 className="text-xl mb-5">Assigned:</h1>
-//         <div className="flex items-center space-x-4">
-//           <Avatar alt="Renchindorj" />
-//           <h1 className="text-xl">Renchindorj</h1>
-//         </div>
-//       </div>
-//       <Button className="mt-10">Assign</Button>
-//     </div>
-//   </Fade>
-// </Modal>
-
 const TaskModal: FunctionComponent<{
   className?: string;
   task?: Task;
@@ -185,7 +139,15 @@ const TaskModal: FunctionComponent<{
         paper: "!max-w-none m-0 w-screen md:w-160 lg:w-200",
       }}
     >
-      <DialogTitle>{title}</DialogTitle>
+      <DialogTitle>
+        <div className="grid w-full grid-cols-2">
+          <p className="col-span-1 self-center font-bold">{title}</p>
+          <div className="text-xs ml-12 col-span-1 space-y-1">
+            <p>Created at: </p>
+            <p className="text-sm font-semibold">{dayjs(createdAt).format("YY/DD/MM HH:MM") ?? ""}</p>
+          </div>
+        </div>
+      </DialogTitle>
       <IconButton
         className="absolute right-2 top-2 bg-gray-100 opacity-80"
         onClick={onClose}
@@ -237,11 +199,11 @@ const TaskModal: FunctionComponent<{
             </Menu>
           </div>
           <div className="grid grid-cols-5">
-            <p className="col-span-4 bg-slate-100 p-4 rounded-sm">
+            <p className="col-span-4 bg-slate-100 p-4 rounded-sm text-base">
               {description}
             </p>
             <div className="col-span-1 w-full justify-center items-end flex flex-col text-base">
-              <p>{dayjs(createdAt).format("YY/DD/MM HH:MM") ?? ""}</p>
+              <p>Due to: </p>
               <p className="text-status-red font-bold">
                 {dayjs(dueDate).format("YY/DD/MM HH:MM") ?? ""}
               </p>
