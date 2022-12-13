@@ -6,7 +6,7 @@ import MainLayout from "../layouts/MainLayout";
 const MyApp: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
   return (
     <MainLayout>
-      <Component {...pageProps} />
+      <Component {...pageProps}/>
     </MainLayout>
   );
 };

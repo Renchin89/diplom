@@ -11,7 +11,7 @@ interface Props {
   className?: string;
 }
 
-const Employees = [
+export const Employees = [
   {
     _id: "a1",
     name: "Renchindorj",

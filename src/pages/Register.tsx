@@ -33,7 +33,7 @@ const Register: FunctionComponent<Props> = ({ className }) => {
         router.push("/login")
       })
       .catch((error: any) => {
-        console.log(error);
+        console.error(error);
       });
   };
   return (
