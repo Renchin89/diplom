@@ -10,14 +10,21 @@ import {
   TextField,
   Avatar,
   Tooltip,
+  Dialog,
+  DialogContent,
+  IconButton,
+  DialogTitle,
+  Menu,
+  MenuItem,
 } from "@material-ui/core";
 import AdjustIcon from "@material-ui/icons/Adjust";
-import { Task, TaskType } from "../../../types/tasks";
+import { PriorityType, Task, TaskType } from "../../../types/tasks";
 import { sendRequest } from "../../../utils/core";
 import dayjs from "dayjs";
-import { Employees } from "../Employee";
-import { FlagIcon } from "../../../assets/icons";
+import { Employess } from "../Employee";
+import { ChevronRightIcon, CloseIcon, FlagIcon } from "../../../assets/icons";
 import { COLORS } from "../../../site-settings/theme";
+import AddEmployeeIcon from "../../../assets/icons/AddEmployee";
 
 interface Props {
   className?: string;
@@ -30,142 +37,228 @@ const Task: Array<Task> = [
     _id: "task1",
     type: "todo",
     title: "To Do title",
-    priority: "Urgent",
+    priority: PriorityType.URGENT,
     createdAt: new Date(),
     dueDate: new Date(),
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ad est! Eveniet a totam cupiditate eligendi, quaerat saepe est harum recusandae alias minus deleniti quidem vero soluta omnis. Quo, voluptas!",
-    assignedTo: Employees,
+    assignedTo: [],
   },
   {
     _id: "task2",
     type: "todo",
     title: "To Do title2",
-    priority: "High",
+    priority: PriorityType.HIGH,
     createdAt: new Date(),
     dueDate: new Date(),
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ad est! Eveniet a totam cupiditate eligendi, quaerat saepe est harum recusandae alias minus deleniti quidem vero soluta omnis. Quo, voluptas! Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ad est! Eveniet a totam cupiditate eligendi, quaerat saepe est harum recusandae alias minus deleniti quidem vero soluta omnis. Quo, voluptas!",
-    assignedTo: Employees,
+    assignedTo: [],
   },
   {
     _id: "task3",
     type: "complete",
     title: "Complete title",
-    priority: "Urgent",
+    priority: PriorityType.HIGH,
     createdAt: new Date(),
     dueDate: new Date(),
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ad est! Eveniet a totam cupiditate eligendi, quaerat saepe est harum recusandae alias minus deleniti quidem vero soluta omnis. Quo, voluptas!",
-    assignedTo: Employees,
+    assignedTo: [],
   },
   {
     _id: "task4",
     type: "complete",
     title: "Complete title1",
-    priority: "Low",
+    priority: PriorityType.LOW,
     createdAt: new Date(),
     dueDate: new Date(),
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ad est! Eveniet a totam cupiditate eligendi, quaerat saepe est harum recusandae alias minus deleniti quidem vero soluta omnis. Quo, voluptas!",
-    assignedTo: Employees,
+    assignedTo: [],
   },
   {
     _id: "task5",
     type: "inProgress",
     title: "In Progress title",
-    priority: "Urgent",
+    priority: PriorityType.URGENT,
     createdAt: new Date(),
     dueDate: new Date(),
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ad est! Eveniet a totam cupiditate eligendi, quaerat saepe est harum recusandae alias minus deleniti quidem vero soluta omnis. Quo, voluptas! Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ad est! Eveniet a totam cupiditate eligendi, quaerat saepe est harum recusandae alias minus deleniti quidem vero soluta omnis. Quo, voluptas!",
-    assignedTo: Employees,
+    assignedTo: [],
   },
   {
     _id: "task6",
     type: "inProgress",
     title: "In Progress title1",
-    priority: "Normal",
+    priority: PriorityType.NORMAL,
     createdAt: new Date(),
     dueDate: new Date(),
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ad est! Eveniet a totam cupiditate eligendi, quaerat saepe est harum recusandae alias minus deleniti quidem vero soluta omnis. Quo, voluptas!",
-    assignedTo: Employees,
+    // assignedTo: Employees,
   },
   {
     _id: "task7",
     type: "inReview",
     title: "In review title",
-    priority: "High",
+    priority: PriorityType.HIGH,
     createdAt: new Date(),
     dueDate: new Date(),
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ad est! Eveniet a totam cupiditate eligendi, quaerat saepe est harum recusandae alias minus deleniti quidem vero soluta omnis. Quo, voluptas!",
-    assignedTo: Employees,
+    assignedTo: [],
   },
 ];
+
+// <Modal
+//   aria-labelledby="transition-modal-title"
+//   aria-describedby="transition-modal-description"
+//   open={isVisible}
+//   onClose={() => {
+//     onClose();
+//   }}
+//   closeAfterTransition
+//   BackdropComponent={Backdrop}
+//   BackdropProps={{
+//     timeout: 500,
+//   }}
+// >
+//   <Fade in={isVisible}>
+//     <div className="w-2/4 flex-wrap flex bg-white m-auto mt-40 p-12">
+//       <div className="flex justify-between">
+//         <h1 className="text-lg">{title}</h1>
+//         <h1
+//           className={
+//             (cn(
+//               priority === "Urgent"
+//                 ? "text-status-red"
+//                 : priority === "High"
+//                 ? "text-status-orange"
+//                 : priority === "Normal"
+//                 ? "text-status-yellow"
+//                 : "text-status-gray"
+//             ),
+//             "font-bold text-base")
+//           }
+//         >
+//           {priority}
+//         </h1>
+//       </div>
+//       <div className="">
+//         <h1 className="text-xl mb-5">Assigned:</h1>
+//         <div className="flex items-center space-x-4">
+//           <Avatar alt="Renchindorj" />
+//           <h1 className="text-xl">Renchindorj</h1>
+//         </div>
+//       </div>
+//       <Button className="mt-10">Assign</Button>
+//     </div>
+//   </Fade>
+// </Modal>
 
 const TaskModal: FunctionComponent<{
   className?: string;
   task?: Task;
+  type?: string;
   isVisible?: boolean;
   onClose: () => void;
-}> = ({ className, task, isVisible = false, onClose }) => {
+}> = ({ className, task, type, isVisible = false, onClose }) => {
   const { description, createdAt, dueDate, title, assignedTo, priority } =
     task ?? {};
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handlePrioritySet = (event: any) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handlePriorityClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
-    <Modal
-      aria-labelledby="transition-modal-title"
-      aria-describedby="transition-modal-description"
+    <Dialog
       open={isVisible}
-      onClose={() => {
-        onClose();
-      }}
-      closeAfterTransition
-      BackdropComponent={Backdrop}
-      BackdropProps={{
-        timeout: 500,
+      onClose={onClose}
+      classes={{
+        paper: "!max-w-none m-0 w-screen md:w-160 lg:w-200",
       }}
     >
-      <Fade in={isVisible}>
-        <div className="w-2/4 flex-wrap flex bg-white m-auto mt-40 p-12">
-          <div className="flex justify-between">
-            <h1 className="text-lg">{title}</h1>
-            <h1
+      <DialogTitle>{title}</DialogTitle>
+      <IconButton
+        className="absolute right-2 top-2 bg-gray-100 opacity-80"
+        onClick={onClose}
+      >
+        <CloseIcon className="text-black" />
+      </IconButton>
+      <hr />
+      <DialogContent
+        classes={{
+          root: "py-6",
+        }}
+      >
+        <div className="w-full flex flex-col space-y-4">
+          <div className="flex w-full justify-between items-center">
+            <div className="flex space-x-1">
+              <div className="border border-gray-700 bg-wallpaper-light rounded-l-md w-fit py-2 px-4 text-base capitalize font-medium">
+                {type ?? ""}
+              </div>
+              <div className="border border-gray-700 bg-wallpaper-light hover:bg-slate-300 cursor-pointer rounded-r-md w-fit p-2">
+                <ChevronRightIcon />
+              </div>
+            </div>
+            <Button
+              variant="outlined"
+              onClick={handlePrioritySet}
+              startIcon={<FlagIcon />}
               className={
-                (cn(
-                  priority === "Urgent"
-                    ? "text-status-red"
-                    : priority === "High"
-                    ? "text-status-orange"
-                    : priority === "Normal"
-                    ? "text-status-yellow"
-                    : "text-status-gray"
-                ),
-                "font-bold text-base")
+                priority === "Urgent"
+                  ? "text-status-red"
+                  : priority === "High"
+                  ? "text-status-orange"
+                  : priority === "Normal"
+                  ? "text-status-yellow"
+                  : "text-status-gray"
               }
             >
               {priority}
-            </h1>
+            </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handlePriorityClose}
+            >
+              {Object.values(PriorityType).map((p, idx) => (
+                <MenuItem key={idx}>{p}</MenuItem>
+              ))}
+            </Menu>
           </div>
-          <div className="">
-            <h1 className="text-xl mb-5">Assigned:</h1>
-            <div className="flex items-center space-x-4">
-              <Avatar alt="Renchindorj" />
-              <h1 className="text-xl">Renchindorj</h1>
+          <div className="grid grid-cols-5">
+            <p className="col-span-4 bg-slate-100 p-4 rounded-sm">
+              {description}
+            </p>
+            <div className="col-span-1 w-full justify-center items-end flex flex-col text-base">
+              <p>{dayjs(createdAt).format("YY/DD/MM HH:MM") ?? ""}</p>
+              <p className="text-status-red font-bold">
+                {dayjs(dueDate).format("YY/DD/MM HH:MM") ?? ""}
+              </p>
             </div>
           </div>
-          <Button className="mt-10">Assign</Button>
+          <IconButton className="h-fit w-fit">
+            <AddEmployeeIcon className="h-8 w8" />
+          </IconButton>
+          {/* <p>{assignedTo}</p> */}
         </div>
-      </Fade>
-    </Modal>
+      </DialogContent>
+    </Dialog>
   );
 };
 
 const Card: FunctionComponent<Props> = ({ className, type, label }) => {
   const [modalVisible, setModalVisible] = useState(false);
-  console.log("🚀 ~ file: Card.tsx:153 ~ modalVisible", modalVisible);
   const [selectedTask, setSelectedTask] = useState<Task>();
   const [posts, setPosts] = useState<string[]>([]);
   if (type === undefined || label === undefined) {
@@ -190,19 +283,25 @@ const Card: FunctionComponent<Props> = ({ className, type, label }) => {
     <div
       className={cn(
         className,
-        type === "todo"
-          ? "bg-status-cyan"
-          : type === "inProgress"
-          ? "bg-status-yellow"
-          : type === "inReview"
-          ? "bg-status-orange"
-          : type === "complete"
-          ? "bg-status-green"
-          : "bg-none",
         "w-full p-4 overflow-y-auto rounded-lg space-y-4"
       )}
     >
-      <p className="text-xl font-bold pl-2">{label ?? ""}</p>
+      <div
+        className={cn(
+          "flex flex-col bg-white border-t-4 px-2 py-4 rounded-md ",
+          type === "todo"
+            ? "border-status-cyan"
+            : type === "inProgress"
+            ? "border-status-yellow"
+            : type === "inReview"
+            ? "border-status-orange"
+            : type === "complete"
+            ? "border-status-green"
+            : "bg-none"
+        )}
+      >
+        <p className="text-xl font-bold">{label ?? ""}</p>
+      </div>
       <>
         {tasks.map((t, idx) => (
           <Paper
@@ -261,6 +360,7 @@ const Card: FunctionComponent<Props> = ({ className, type, label }) => {
         <TaskModal
           onClose={() => setModalVisible(!modalVisible)}
           task={selectedTask}
+          type={label}
           isVisible={modalVisible}
         />
         {/* <Paper

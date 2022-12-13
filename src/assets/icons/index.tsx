@@ -13,3 +13,5 @@ export { default as SettingsIcon } from "./Settings";
 export { default as ReportIcon } from "./Report";
 export { default as AddIcon } from "./Add";
 export { default as FlagIcon } from "./Flag";
+export { default as CloseIcon } from "./Close";
+export { default as AddEmployeeIcon } from "./Close";
