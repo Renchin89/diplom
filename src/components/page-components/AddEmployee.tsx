@@ -61,28 +61,14 @@ const AddEmployee: FunctionComponent<Props> = ({ className }) => {
     <div className={cn(className, "")}>
       <div className="w-2/4 m-auto bg-white p-10 flex flex-col space-y-4">
         <Avatar className="w-56 h-56 mb-10 m-auto" />
-        {/* <Select
-          defaultValue={department}
-          value={department}
-          label="Department"
-          onChange={(e) => {
-            setDepartment(e.target.value as DepartmentTypes);
-          }}
-        >
-          {departmentArray.map((dep, idx) => (
-            <MenuItem key={idx} value={idx}>
-              {dep}
-            </MenuItem>
-          ))}
-        </Select> */}
         <TextField
-          label="Firstname"
+          label="Нэр"
           variant="outlined"
           value={firstName}
           onChange={(e: any) => setFirstName(e.target.value)}
         />
         <TextField
-          label="Lastname"
+          label="Овог"
           variant="outlined"
           value={lastName}
           onChange={(e: any) => setLastName(e.target.value)}
@@ -95,33 +81,21 @@ const AddEmployee: FunctionComponent<Props> = ({ className }) => {
           onChange={(e: any) => setEmail(e.target.value)}
         />
         <TextField
-          label="Username"
+          label="Нэвтрэх нэр"
           variant="outlined"
           value={username}
           onChange={(e: any) => setUserName(e.target.value)}
         />
         <TextField
           type="password"
-          label="Password"
+          label="Нууц үг"
           variant="outlined"
           value={password}
           onChange={(e: any) => setPassword(e.target.value)}
         />
-        {/* <Select
-          defaultValue={status}
-          value={status}
-          label="Active or Not active"
-          onChange={(e) => {
-            setStatus(e.target.value as EmployeeStatus);
-          }}
-        >
-          {employeeStatusArray.map((emp, idx) => (
-            <MenuItem key={idx} value={idx}>
-              {emp}
-            </MenuItem>
-          ))}
-        </Select> */}
-        <Button className="mt-10" onClick={handleLogin}>Add Employee</Button>
+        <Button className="mt-10" onClick={handleLogin}>
+          Add Employee
+        </Button>
       </div>
     </div>
   );

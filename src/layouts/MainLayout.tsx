@@ -16,7 +16,7 @@ const MainLayout: FunctionComponent<{ children?: any }> = ({ children }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
         <meta name="theme-color" content="#ffffff" />
-        <title>HR system</title>
+        <title>Хүний нөөцийн систем</title>
       </Head>
       <div
         id="main-container"
@@ -31,10 +31,10 @@ const MainLayout: FunctionComponent<{ children?: any }> = ({ children }) => {
           <div
             className={cn(
               isExtended ? "px-12 py-6" : "px-8 py-6",
-              "h-18 border-b border-gray-500"
+              "h-18 border-b border-gray-500 font-bold"
             )}
           >
-            {isExtended ? <span>HR SYSTEM</span> : <span>HR</span>}
+            {isExtended ? <span>Хүний нөөцийн систем</span> : <span>HR</span>}
           </div>
           <SideMenu isExtended={isExtended} />
         </div>

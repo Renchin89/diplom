@@ -40,10 +40,10 @@ export const navigationTabItems: Array<{
   }>;
 }> = [
   {
-    groupLabel: "Main",
+    groupLabel: "Үндсэн",
     groupItems: [
       {
-        label: "Task",
+        label: "Даалгавар",
         value: MainTab.TASK,
         link: `/${MainTab.TASK}`,
         icon: TaskIcon,
@@ -51,22 +51,22 @@ export const navigationTabItems: Array<{
     ],
   },
   {
-    groupLabel: "Organization",
+    groupLabel: "Байгууллага",
     groupItems: [
       {
-        label: "Employee",
+        label: "Ажилчид",
         value: OrganizationTab.EMPLOYEE,
         link: `/`,
         icon: EmployeeIcon,
       },
       {
-        label: "Risk",
+        label: "Эрсдэл",
         value: OrganizationTab.RISK,
         link: `/${OrganizationTab.RISK}`,
         icon: RiskIcon,
       },
       {
-        label: "Report",
+        label: "Тайлан",
         value: OrganizationTab.REPORT,
         link: `/${OrganizationTab.REPORT}`,
         icon: ReportIcon,
@@ -74,10 +74,10 @@ export const navigationTabItems: Array<{
     ],
   },
   {
-    groupLabel: "Settings",
+    groupLabel: "Тохиргоо",
     groupItems: [
       {
-        label: "Settings",
+        label: "Тохиргоо",
         value: SettingsTab.SETTINGS,
         link: `/${SettingsTab.SETTINGS}`,
         icon: SettingsIcon,

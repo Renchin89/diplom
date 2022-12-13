@@ -30,7 +30,7 @@ const Register: FunctionComponent<Props> = ({ className }) => {
     })
       .then((res: any) => {
         console.log(res);
-        router.push("/")
+        router.push("/");
       })
       .catch((error: any) => {
         console.error(error);
@@ -38,19 +38,31 @@ const Register: FunctionComponent<Props> = ({ className }) => {
   };
   return (
     <div className={cn(className, "w-full")}>
-      <div className="w-2/5 m-auto">
+      <div className="w-2/4 m-auto">
         <h1 className="text-4xl font-bold text-center">
-          HR Risk Management System
+          Хүний нөөцийн эрсдлийн менежмент гаргах систем
         </h1>
 
         <div className="mt-10 flex flex-col space-y-4">
           <div className="flex space-x-2">
-            <a href="/Login">Login</a>
+            <a href="/Login">Нэвтрэх</a>
             <p>|</p>
-            <a href="/Register">Register</a>
+            <a href="/Register">Бүртгүүлэх</a>
           </div>
           <TextField
-            placeholder="username"
+            type="string"
+            placeholder="Овог"
+            value={lastName}
+            onChange={(e: any) => setLastName(e.target.value)}
+          />
+          <TextField
+            type="string"
+            placeholder="Нэр"
+            value={firstName}
+            onChange={(e: any) => setFirstName(e.target.value)}
+          />
+          <TextField
+            placeholder="Нэвтрэх нэр"
             value={username}
             onChange={(e: any) => setUserName(e.target.value)}
           />
@@ -62,24 +74,12 @@ const Register: FunctionComponent<Props> = ({ className }) => {
           />
           <TextField
             type="password"
-            placeholder="Password"
+            placeholder="Нууц үг"
             value={password}
             onChange={(e: any) => setPassword(e.target.value)}
           />
-          <TextField
-            type="string"
-            placeholder="FirstName"
-            value={firstName}
-            onChange={(e: any) => setFirstName(e.target.value)}
-          />
-          <TextField
-            type="string"
-            placeholder="LastName"
-            value={lastName}
-            onChange={(e: any) => setLastName(e.target.value)}
-          />
           <Button onClick={handleLogin} className="mt-5">
-            Register
+            Бүртгүүлэх
           </Button>
         </div>
       </div>

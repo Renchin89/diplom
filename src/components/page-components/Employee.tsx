@@ -106,14 +106,16 @@ const EmployeeCard: FunctionComponent<Employee> = props => {
             onClose={handleClose}
             aria-labelledby="form-dialog-title"
           >
-            <DialogTitle id="form-dialog-title">Edit</DialogTitle>
+            <DialogTitle id="form-dialog-title">
+              Ажилтны мэдээлэл засах
+            </DialogTitle>
             <DialogContent>
               <DialogContentText>
                 To subscribe to this website, please enter your email address
                 here. We will send updates occasionally.
               </DialogContentText>
               <TextField
-                label="Firstname"
+                label="Овог"
                 defaultValue={name}
                 className="w-full mb-5"
                 variant="outlined"
@@ -123,7 +125,7 @@ const EmployeeCard: FunctionComponent<Employee> = props => {
                 }}
               />
               <TextField
-                label="Lastname"
+                label="Нэр"
                 defaultValue={lastname}
                 className="w-full mb-5"
                 variant="outlined"
@@ -133,7 +135,7 @@ const EmployeeCard: FunctionComponent<Employee> = props => {
                 }}
               />
               <TextField
-                label="Position"
+                label="Салбар"
                 defaultValue={position}
                 className="w-full mb-5"
                 variant="outlined"
@@ -142,25 +144,8 @@ const EmployeeCard: FunctionComponent<Employee> = props => {
                   setUpdatedData({ position: val });
                 }}
               />
-              {/* <Select
-                labelId="demo-simple-select-helper-label"
-                id="demo-simple-select-helper"
-                defaultValue={department}
-                onChange={async (e: any) => {
-                  const val = e.target.value;
-                  await setUpdatedData({ department: val });
-                }}
-              >
-                {departments.map((dep, ind) => {
-                  return (
-                    <MenuItem key={ind} value={dep}>
-                      {dep}
-                    </MenuItem>
-                  );
-                })}
-              </Select> */}
               <TextField
-                label="Phone"
+                label="Утас"
                 defaultValue={phoneNumber}
                 className="w-full mb-5"
                 variant="outlined"
@@ -201,10 +186,10 @@ const EmployeeCard: FunctionComponent<Employee> = props => {
             </DialogContent>
             <DialogActions>
               <Button onClick={() => setOpen(!open)} color="primary">
-                Cancel
+                Цуцлах
               </Button>
               <Button onClick={handleUpdate} color="primary">
-                Save
+                Хадаглах
               </Button>
             </DialogActions>
           </Dialog>
@@ -220,9 +205,9 @@ const EmployeeCard: FunctionComponent<Employee> = props => {
                 setOpen(!open);
               }}
             >
-              Edit
+              Засах
             </MenuItem>
-            <MenuItem onClick={handleDelete}>Delete</MenuItem>
+            <MenuItem onClick={handleDelete}>Устгах</MenuItem>
           </Menu>
         </div>
       </div>
@@ -236,16 +221,15 @@ const EmployeeCard: FunctionComponent<Employee> = props => {
           {lastname}&nbsp;
           {name}
         </p>
-        <p className="text-gray-600">{position ?? ""}</p>
       </div>
       <div className="bg-wallpaper-light rounded border border-gray-400 p-3 space-y-4">
         <div className="flex w-full text-xs">
           <div className="flex flex-col w-1/2 space-y-1">
-            <p className="text-gray-600">Department</p>
-            <p className="text-base">{department ?? ""}</p>
+            <p className="text-gray-600">Салбар</p>
+            <p className="text-base">{position ?? ""}</p>
           </div>
           <div className="flex flex-col w-1/2 space-y-1">
-            <p className="text-gray-600">Date Hired</p>
+            <p className="text-gray-600">Ажилд орсон өдөр</p>
             <p className="text-base">
               {dayjs(dateJoined).format("DD/MM/YYYY")}
             </p>
@@ -297,9 +281,9 @@ const Employee: FunctionComponent<Props> = ({ className }) => {
   return (
     <div className={cn(className, "flex flex-col w-full")}>
       <div className="header flex justify-between align-middle items-center w-full">
-        <h1 className="text-3xl font-bold">{employeeCount} Employees</h1>
+        <h1 className="text-3xl font-bold">{employeeCount} Ажилтан</h1>
         <div className="flex space-x-12 items-center">
-          <p>0 selected</p>
+          <p>0 сонгосон</p>
           <IconButton>
             <MoreIcon />
           </IconButton>
@@ -311,7 +295,7 @@ const Employee: FunctionComponent<Props> = ({ className }) => {
               router.push("/AddEmployee");
             }}
           >
-            Add employee
+            Ажилтан нэмэх
           </Button>
         </div>
       </div>

@@ -4,10 +4,10 @@ export type TaskType = "todo" | "inProgress" | "inReview" | "complete";
 // export type PriorityType = "Urgent" | "High" | "Normal" | "Low"
 
 export enum PriorityType {
-  URGENT = "Urgent",
-  HIGH = "High",
-  NORMAL = "Normal",
-  LOW = "Low",
+  URGENT = "Маш яаралтай",
+  HIGH = "Яаралтай",
+  NORMAL = "Дунд зэрэг",
+  LOW = "Шаардлаггүй",
 }
 
 export interface Task {

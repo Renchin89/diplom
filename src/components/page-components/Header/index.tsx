@@ -33,7 +33,7 @@ const Header: FunctionComponent<Props> = ({
         </div>
       </div>
       <span className="p-4 border-r-2">
-        <p>Your organization</p>
+        <p>Байгууллага</p>
         <h1 className="font-bold">NUM</h1>
       </span>
       <span className="absolute right-10 top-4 flex space-x-4">

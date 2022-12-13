@@ -7,18 +7,18 @@ export const tasks: Array<{
 }>= [
     {
         type: "todo",
-        label: "To Do"
+        label: "Төлөвлөсөн"
     },
     {
         type: "inProgress",
-        label: "In Progress"
+        label: "Хийж буй"
     },
     {
         type: "inReview",
-        label: "In Review"
+        label: "Шалгаж буй"
     },
     {
         type: "complete",
-        label: "Complete"
+        label: "Дууссан"
     }
 ]

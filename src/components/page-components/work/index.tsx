@@ -78,31 +78,31 @@ const TaskPage: FunctionComponent<Props> = ({ className }) => {
           <Fade in={modalVisible}>
             <div className="w-2/4 flex-wrap flex bg-white m-auto mt-40 p-12">
               <div className="w-3/4">
-                <h1 className="text-2xl mb-10">Add New Task</h1>
+                <h1 className="text-2xl mb-10">Шинэ ажил нэмэх</h1>
                 <TextField
                   onChange={(e: any) => setName(e.target.value)}
-                  label="Add Title"
+                  label="Гарчиг"
                   variant="outlined"
                   multiline
                   className="pr-10 text-lg w-full"
                 />
                 <TextField
                   onChange={(e: any) => setContent(e.target.value)}
-                  label="Add Description"
+                  label="Тайлбар"
                   variant="outlined"
                   multiline
                   className="pr-10 mt-10 text-lg w-full"
                 />
               </div>
               <div className="">
-                <h1 className="text-xl mb-5">Creating by:</h1>
+                <h1 className="text-xl mb-5">Хийж буй ажилтан</h1>
                 <div className="flex items-center space-x-4">
                   <Avatar alt="Renchindorj" />
                   <h1 className="text-xl">Renchindorj</h1>
                 </div>
               </div>
               <Button className="mt-10" onClick={handleAddTask}>
-                Add Task
+                Ажил Нэмэх
               </Button>
             </div>
           </Fade>

@@ -13,8 +13,8 @@ export interface Employee {
 }
 
 export enum EmployeeStatus {
-  ACTIVE = "active",
-  INACTIVE = "not active",
+  ACTIVE = "идэвхитэй",
+  INACTIVE = "идэвхигүй",
 }
 
 export enum DepartmentTypes {
