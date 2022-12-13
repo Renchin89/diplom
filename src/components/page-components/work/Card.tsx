@@ -161,7 +161,7 @@ const Task: Array<Task> = [
 const TaskModal: FunctionComponent<{
   className?: string;
   task?: Task;
-  type?: TaskType;
+  type?: string;
   isVisible?: boolean;
   onClose: () => void;
 }> = ({ className, task, type, isVisible = false, onClose }) => {
@@ -283,19 +283,25 @@ const Card: FunctionComponent<Props> = ({ className, type, label }) => {
     <div
       className={cn(
         className,
-        type === "todo"
-          ? "bg-status-cyan"
-          : type === "inProgress"
-          ? "bg-status-yellow"
-          : type === "inReview"
-          ? "bg-status-orange"
-          : type === "complete"
-          ? "bg-status-green"
-          : "bg-none",
         "w-full p-4 overflow-y-auto rounded-lg space-y-4"
       )}
     >
-      <p className="text-xl font-bold pl-2">{label ?? ""}</p>
+      <div
+        className={cn(
+          "flex flex-col bg-white border-t-4 px-2 py-4 rounded-md ",
+          type === "todo"
+            ? "border-status-cyan"
+            : type === "inProgress"
+            ? "border-status-yellow"
+            : type === "inReview"
+            ? "border-status-orange"
+            : type === "complete"
+            ? "border-status-green"
+            : "bg-none"
+        )}
+      >
+        <p className="text-xl font-bold">{label ?? ""}</p>
+      </div>
       <>
         {tasks.map((t, idx) => (
           <Paper
@@ -354,7 +360,7 @@ const Card: FunctionComponent<Props> = ({ className, type, label }) => {
         <TaskModal
           onClose={() => setModalVisible(!modalVisible)}
           task={selectedTask}
-          type={type}
+          type={label}
           isVisible={modalVisible}
         />
         {/* <Paper
