@@ -15,8 +15,8 @@ export interface Task {
   type: TaskType;
   priority?: PriorityType;
   title?: string;
-  description?: string;
+  content?: string;
   createdAt?: Date;
   dueDate?: Date;
-  assignedTo?: Employee[];
+  assignees?: [];
 }

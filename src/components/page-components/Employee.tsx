@@ -72,7 +72,6 @@ const EmployeeCard: FunctionComponent<Employee> = props => {
   };
 
   const handleUpdate = () => {
-    console.log(updatedData);
     sendRequest(`/user/${_id}`, "put", updatedData)
       .then((res: any) => {
         setOpen(!open);

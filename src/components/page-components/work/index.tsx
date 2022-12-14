@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import cn from "classnames";
 import {
@@ -26,17 +26,17 @@ const TaskPage: FunctionComponent<Props> = ({ className }) => {
   const [name, setName] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [type, setType] = useState<string>("");
-  const [assignee, setAssignee] = useState<string>("");
+  const [assignees, setAssignees] = useState<string>("");
   const [status, setStatus] = useState<string>("");
 
   const handleAddTask = (event: any) => {
     event.preventDefault();
 
-    sendRequest("/auth/register", "post", {
+    sendRequest("/task", "post", {
       name: name,
       content: content,
       type: type,
-      assignee: assignee,
+      assignee: assignees,
       status: status,
     })
       .then((res: any) => {
@@ -47,13 +47,15 @@ const TaskPage: FunctionComponent<Props> = ({ className }) => {
       });
   };
 
+
   return (
     <div className={cn(className, "w-full p-2 flex max-h-240")}>
       <>
         <div className="w-full grid grid-cols-4 gap-4">
-          {tasks.map((t, idx) => (
-            <Card type={t.type} label={t.label} key={idx} />
-          ))}
+          {tasks.map((t, idx) => {
+            console.log(t);
+            return <Card type={t.type} label={t.label} key={idx} />;
+          })}
         </div>
         <Fab
           color="secondary"
